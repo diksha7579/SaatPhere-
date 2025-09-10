@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Customize Your Invitation | SaatPhere</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Dancing+Script&family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav>
+      <h2 class="logo">SaatPhere ∞</h2>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="templates.html" class="active">Templates</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Section -->
+  <section class="customize-section">
+    <h2>Fill Invitation Details</h2>
+    <form id="inviteForm">
+      <input type="hidden" id="templateId" name="templateId">
+      <input type="text" name="bride" placeholder="Bride's Name" required>
+      <input type="text" name="groom" placeholder="Groom's Name" required>
+      <input type="date" name="date" required>
+      <input type="text" name="venue" placeholder="Venue" required>
+      <input type="text" name="timing" placeholder="Timing" required>
+      <div id="recipients">
+        <input type="text" name="recipient[]" placeholder="Recipient's Name" required>
+      </div>
+      <button type="button" id="addRecipient">Add More Recipient</button>
+      <button type="submit">Submit</button>
+    </form>
+
+    <div id="popup" class="popup">Successfully submitted! Preview your template.</div>
+    <div id="previewContainer"></div>
+
+    <div class="customize-controls">
+      <label>Font Size: <input type="range" id="fontSize" min="16" max="48" value="24"></label>
+      <label>Font Color: <input type="color" id="fontColor" value="#333333"></label>
+      <label>Font Family:
+        <select id="fontFamily">
+          <option value="Poppins">Poppins</option>
+          <option value="Dancing Script">Dancing Script</option>
+          <option value="Montserrat">Montserrat</option>
+        </select>
+      </label>
+    </div>
+
+    <button id="downloadBtn">Download</button>
+    <button id="shareBtn">Share on WhatsApp</button>
+  </section>
+
+  <!-- Libraries + JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script src="templates.js"></script>
+</body>
+</html>
