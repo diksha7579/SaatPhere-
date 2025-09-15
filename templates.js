@@ -5,8 +5,7 @@ document.getElementById("templateId").value = templateId;
 const previewContainer = document.getElementById("previewContainer");
 const form = document.getElementById("inviteForm");
 
-// ✅ Track dragged positions per recipient
-const textPositions = {}; // { recipientName: { left, top } }
+const textPositions = {};
 
 const templateBackgrounds = {
   ganeshpuja1: "Images/ganeshpuja2.png",
@@ -32,14 +31,12 @@ const templateBackgrounds = {
   reception3: "Images/reception3.jpg"
 };
 
-// ✅ Add recipient input
 document.getElementById("addRecipient").addEventListener("click", () => {
   const div = document.createElement("div");
   div.innerHTML = `<input type="text" name="recipient[]" placeholder="Recipient's Name">`;
   document.getElementById("recipients").appendChild(div);
 });
 
-// ✅ Generate preview cards
 function generatePreviews() {
   const bride = form.bride.value || "";
   const groom = form.groom.value || "";
@@ -114,7 +111,6 @@ function generatePreviews() {
   };
 }
 
-// ✅ Enable drag for each preview text
 function enableDrag(textElement) {
   let isDragging = false;
   let offsetX, offsetY;
@@ -154,14 +150,12 @@ function enableDrag(textElement) {
   });
 }
 
-// ✅ Trigger preview only on Submit
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   generatePreviews();
   document.getElementById("popup").style.display = "block";
 });
 
-// ✅ Instant font customization
 function applyFontStyles() {
   const fontSize = document.getElementById("fontSize").value + "px";
   const fontColor = document.getElementById("fontColor").value;
@@ -178,7 +172,6 @@ document.getElementById("fontSize").addEventListener("input", applyFontStyles);
 document.getElementById("fontColor").addEventListener("input", applyFontStyles);
 document.getElementById("fontFamily").addEventListener("change", applyFontStyles);
 
-// ✅ Download all cards
 document.getElementById("downloadBtn").addEventListener("click", () => {
   const cards = document.querySelectorAll(".preview-area");
   cards.forEach((card, index) => {
@@ -191,16 +184,15 @@ document.getElementById("downloadBtn").addEventListener("click", () => {
   });
 });
 
-// ✅ Share on WhatsApp (first card only)
 document.getElementById("shareBtn").addEventListener("click", () => {
   const text = encodeURIComponent("Here’s our wedding invitation ❤️");
   window.open(`https://wa.me/?text=${text}`, "_blank");
 });
 
-// ✅ Trigger preview on page load if needed
 window.addEventListener("DOMContentLoaded", () => {
   const hasTemplate = templateId && templateBackgrounds[templateId];
   if (hasTemplate) {
     generatePreviews();
   }
+
 });
